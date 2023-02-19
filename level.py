@@ -1,7 +1,11 @@
 import pygame
 from settings import  *
 from tile import Tile
-from player import Player
+from grass import Grass
+from pokemon1 import Pokemon1
+from pokemon2 import Pokemon2
+from pokemon3 import Pokemon3
+from pokemon4 import Pokemon4
 
 class Level:
 
@@ -24,6 +28,16 @@ class Level:
                 y = row_index * TILESIZE
                 if col == 'x':
                     Tile((x,y),[self.visible_sprites,self.obstacle_sprites])
+                if col == 'g':
+                    Grass((x,y),[self.visible_sprites])
+                if col == '1':
+                    Pokemon1((x,y),[self.visible_sprites])
+                if col == '2':
+                    Pokemon2((x,y),[self.visible_sprites])
+                if col == '3':
+                    Pokemon3((x,y),[self.visible_sprites])
+                if col == '4':
+                    Pokemon4((x,y),[self.visible_sprites])
                 
 
 
