@@ -6,6 +6,7 @@ from pokemon1 import Pokemon1
 from pokemon2 import Pokemon2
 from pokemon3 import Pokemon3
 from pokemon4 import Pokemon4
+from player import Player
 
 class Level:
 
@@ -20,6 +21,8 @@ class Level:
     def run(self):
         #update
         self.visible_sprites.draw(self.display_surface)
+        self.visible_sprites.update()
+
 
     def create_map(self):
         for row_index,row in enumerate(WORLD_MAP):
@@ -38,6 +41,8 @@ class Level:
                     Pokemon3((x,y),[self.visible_sprites])
                 if col == '4':
                     Pokemon4((x,y),[self.visible_sprites])
+                if col == 'z':
+                    self.player = Player((x,y),[self.visible_sprites])
                 
 
 
