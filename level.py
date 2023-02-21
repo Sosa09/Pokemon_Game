@@ -2,10 +2,7 @@ import pygame
 from settings import  *
 from tile import Tile
 from grass import Grass
-from pokemon1 import Pokemon1
-from pokemon2 import Pokemon2
-from pokemon3 import Pokemon3
-from pokemon4 import Pokemon4
+from pokemons import *
 from player import Player
 
 class Level:
