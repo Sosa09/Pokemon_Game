@@ -4,7 +4,8 @@ from tile import Tile
 from grass import Grass
 from pokemons import *
 from player import Player
-
+from pokeball import Pokeball
+from potion import Potion
 class Level:
 
     def  __init__(self):
@@ -38,6 +39,10 @@ class Level:
                     Pokemon3((x,y),[self.visible_sprites])
                 if col == '4':
                     Pokemon4((x,y),[self.visible_sprites])
+                if col == '5':
+                    Pokeball((x,y),[self.visible_sprites])
+                if col == 'p':
+                    Potion((x,y),[self.visible_sprites])
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
                 
