@@ -1,5 +1,6 @@
 import pygame
 import sys
+from intro import IntroVideo
 from menu import Menu
 
 def run_game():
@@ -36,4 +37,6 @@ def run_game():
 
 if __name__ == "__main__":
     pygame.init()
+    intro = IntroVideo("images\pokemon_intro.mp4", 800, 600)
+    intro.play(163) # In seconds
     run_game()
