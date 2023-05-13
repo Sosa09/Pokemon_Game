@@ -1,7 +1,7 @@
 import pygame
 import sys
 from intro import IntroVideo
-from menu import Menu
+from main_menu import Menu
 
 def run_game():
     # Set the window size
@@ -37,6 +37,6 @@ def run_game():
 
 if __name__ == "__main__":
     pygame.init()
-    intro = IntroVideo("images\pokemon_intro.mp4", 800, 600)
+    intro = IntroVideo("files_joris\images\pokemon_intro.mp4", 800, 600)
     intro.play(163) # In seconds
     run_game()
