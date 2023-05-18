@@ -27,7 +27,7 @@ player_height = player_image.get_height()
 player_x = (window_width - player_width) // 2
 player_y = (window_height - player_height) 
 
-# Set the speed of the player movement
+# Set the speed of the player movement. Its so low bc original pic is so small.
 player_speed = 0.5
 
 # Create a separate surface for the background
