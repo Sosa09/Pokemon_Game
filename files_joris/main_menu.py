@@ -68,3 +68,20 @@ class Menu:
 
         # Update the display
         pygame.display.flip()
+
+    def handle_event(self, event):
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
+            if self.start_pos[0] <= mouse_pos[0] <= self.start_pos[0] + self.button_width and \
+                self.start_pos[1] <= mouse_pos[1] <= self.start_pos[1] + self.button_height:
+                print("Starting the game...")
+                # Add your game start code here
+            elif self.load_pos[0] <= mouse_pos[0] <= self.load_pos[0] + self.button_width and \
+                self.load_pos[1] <= mouse_pos[1] <= self.load_pos[1] + self.button_height:
+                print("Loading the game...")
+                # Add your game load code here
+            elif self.exit_pos[0] <= mouse_pos[0] <= self.exit_pos[0] + self.button_width and \
+                self.exit_pos[1] <= mouse_pos[1] <= self.exit_pos[1] + self.button_height:
+                print("Exiting the game...")
+                pygame.quit()
+                sys.exit()

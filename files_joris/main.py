@@ -16,21 +16,8 @@ def run_game():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-            elif event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos()
-                if menu.start_pos[0] <= mouse_pos[0] <= menu.start_pos[0] + menu.button_width and \
-                menu.start_pos[1] <= mouse_pos[1] <= menu.start_pos[1] + menu.button_height:
-                    print("Starting the game...")
-                    # Add your game start code here
-                elif menu.load_pos[0] <= mouse_pos[0] <= menu.load_pos[0] + menu.button_width and \
-                    menu.load_pos[1] <= mouse_pos[1] <= menu.load_pos[1] + menu.button_height:
-                    print("Loading the game...")
-                    # Add your game load code here
-                elif menu.exit_pos[0] <= mouse_pos[0] <= menu.exit_pos[0] + menu.button_width and \
-                    menu.exit_pos[1] <= mouse_pos[1] <= menu.exit_pos[1] + menu.button_height:
-                    print("Exiting the game...")
-                    pygame.quit()
-                    sys.exit()
+            else:
+                menu.handle_event(event)  # calls then menu event
 
         # Draw the menu
         menu.draw_menu()
