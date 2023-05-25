@@ -2,7 +2,7 @@ import pygame
 from settings import  *
 from tile import Tile
 from grass import Grass
-from pokemons import *
+from pokemon import *
 from player import Player
 
 class Level:
@@ -13,7 +13,9 @@ class Level:
         #sprite group setup
         self.visible_sprites = YsortCameraGroup()
         self.obstacle_sprites = pygame.sprite.Group()
+        self.pokemons = []
         self.create_map()
+       
 
     def run(self):
         #update
@@ -31,15 +33,16 @@ class Level:
                 if col == 'g':
                     Grass((x,y),[self.visible_sprites])
                 if col == '1':
-                    Pokemon1((x,y),[self.visible_sprites])
+                    self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
                 if col == '2':
-                    Pokemon2((x,y),[self.visible_sprites])
+                    self.pokemons.append(Pokemon2((x,y),[self.visible_sprites]))
                 if col == '3':
-                    Pokemon3((x,y),[self.visible_sprites])
+                    self.pokemons.append(Pokemon3((x,y),[self.visible_sprites]))
                 if col == '4':
-                    Pokemon4((x,y),[self.visible_sprites])
+                    self.pokemons.append(Pokemon4((x,y),[self.visible_sprites]))
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
+                    
                 
 
 class YsortCameraGroup(pygame.sprite.Group):

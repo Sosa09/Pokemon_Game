@@ -1,0 +1,12 @@
+'pokemon'
+{
+    name:"Charizard"
+},
+{
+    name:"Pikachu",
+    img: ../image/pikachu,
+}
+trainer
+{
+
+}
