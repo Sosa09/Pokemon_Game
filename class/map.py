@@ -45,11 +45,12 @@ class Game:
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         #remove element after it has collided
                         self.groups.remove(self.collidedItem)
-                        self.e.remove(self.collidedItem)
+                        self.level.pokemons.remove(self.collidedItem)
                         # Update groups
+                        self.collidedItem.image = pygame.Surface((10,10))
                         self.groups.update()
                         battleState = False
-                        self.start_game_loop()
+                        self.run()
                 # Create a font object
                 font = pygame.font.SysFont("Arial", 30)
 
