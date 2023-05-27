@@ -3,27 +3,29 @@ import sys
 from intro import IntroVideo
 from main_menu import Menu
 from lab_oak import FirstGameScreen
+from menuscreen import MenuScreen
+from settings import Settings
 
 def run_game():
-    # Set the window size
-    window_size = (800, 600)
+    # Initialize Pygame
+    pygame.init()
 
-    # Create a menu instance
-    menu = Menu(window_size)
-    running_menu = True
+    # Set up the window by using Settings class
+    screen_settings = Settings()
+    screen_width = screen_settings.get_screen_width()
+    screen_height = screen_settings.get_screen_height()
 
-    # Create first Game map instance
-    lab = FirstGameScreen(window_size)
-    running_lab_oak = False
+    # Set up the title
+    pygame.display.set_caption("Pokemon")
 
+    # Creating the screen itself
+    screen = pygame.display.set_mode((screen_width, screen_height))
 
-    running_pause_button = False
-    running_open_world = False
-    running_battle_mode = False
+    # Define colors
+    BLACK = (0, 0, 0)
 
-
-
-
+    # Set the current screen
+    current_screen = MenuScreen()
 
     # Game loop
     while True:
@@ -31,29 +33,21 @@ def run_game():
             if event.type == pygame.QUIT:
                 pygame.quit()
                 sys.exit()
-                
-            elif running_menu == True:
-                menu.handle_event(event)  # calls then menu event
 
-            elif running_lab_oak == True:
-                lab.game_loop()
-                running_menu = False
+            current_screen = current_screen.handle_events(event)
 
+        # Clear the screen
+        screen.fill(BLACK)
 
-        if running_menu == True:
-            # Draw the menu
-            menu.draw_menu()
+        # Update and draw the current screen
+        current_screen.update()
+        current_screen.draw(screen)
 
-        elif running_lab_oak == True:
-            # load player
-            lab.load_player()
-
-
-
-
+        # Update the display
+        pygame.display.flip()
 
 if __name__ == "__main__":
-    pygame.init()
-    intro = IntroVideo("files_joris\images\pokemon_intro.mp4", 800, 600)
-    intro.play(163) # In seconds
+#    pygame.init()
+#    intro = IntroVideo("files_joris\images\pokemon_intro.mp4", 800, 600)
+#    intro.play(163) # In seconds
     run_game()

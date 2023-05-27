@@ -1,18 +1,15 @@
 import pygame
 import sys
+from screen import Screen
 from lab_oak import FirstGameScreen
 
-class Menu:
-    def __init__(self, window_size):
-        # Initialize Pygame
-        pygame.init()
+class Menu(Screen):
+    def __init__(self):
+        super().__init__()
+        
+        
 
-        # activate Menu
-        self.running_menu = True
-
-        # Set the window size
-        self.window_size = window_size
-        self.screen = pygame.display.set_mode(self.window_size)
+        # Set title
         pygame.display.set_caption("Game Menu")
 
         # Set colors
@@ -33,22 +30,13 @@ class Menu:
 
         # Position buttons
         self.button_spacing = 20  # Spacing between buttons
-        self.button_x = (self.window_size[0] - (self.button_width * 3 + self.button_spacing * 2)) // 2
+        self.button_x = (800 - (self.button_width * 3 + self.button_spacing * 2)) // 2
         self.button_y = 475
 
         self.start_pos = (self.button_x, self.button_y)
         self.load_pos = (self.button_x + self.button_width + self.button_spacing, self.button_y)
         self.exit_pos = (self.button_x + 2 * (self.button_width + self.button_spacing), self.button_y)
 
-      
-        # Load the background image
-        background_image = pygame.image.load("images\pokemon.jpg")
-
-        # Resize the background image to fit the display window
-        background_image = pygame.transform.scale(background_image, (700, 500))
-
-        # Blit the background image onto the screen
-        self.screen.blit(background_image, (50, 50))      
 
     def create_round_button(self, text, color, hover_color):
         button_radius = 10  # Radius of the round button
@@ -63,38 +51,48 @@ class Menu:
 
         return button_surface
 
-    def draw_menu(self):
+    def draw(self, screen):
+
+        # Load the background image
+        background_image = pygame.image.load("images\pokemon.jpg")
+
+        # Resize the background image to fit the display window
+        background_image = pygame.transform.scale(background_image, (700, 500))
+
+        # Blit the background image onto the screen
+        screen.blit(background_image, (50, 50)) 
 
         # Draw buttons
-        self.screen.blit(self.start_button, self.start_pos)
-        self.screen.blit(self.load_button, self.load_pos)
-        self.screen.blit(self.exit_button, self.exit_pos)
+        screen.blit(self.start_button, self.start_pos)
+        screen.blit(self.load_button, self.load_pos)
+        screen.blit(self.exit_button, self.exit_pos)
 
         # Update the display
         pygame.display.flip()
 
-    def handle_event(self, event):
+    def handle_events(self, event):
 
-        if self.running_menu == True:
+        if event.type == pygame.MOUSEBUTTONDOWN:
+            mouse_pos = pygame.mouse.get_pos()
 
-            if event.type == pygame.MOUSEBUTTONDOWN:
-                mouse_pos = pygame.mouse.get_pos()
+            if self.start_pos[0] <= mouse_pos[0] <= self.start_pos[0] + self.button_width and \
+                self.start_pos[1] <= mouse_pos[1] <= self.start_pos[1] + self.button_height:
+                print("Starting the game...")
+                return FirstGameScreen()
 
-                if self.start_pos[0] <= mouse_pos[0] <= self.start_pos[0] + self.button_width and \
-                    self.start_pos[1] <= mouse_pos[1] <= self.start_pos[1] + self.button_height:
-                    print("Starting the game...")
-                    # remove activation
-                    self.running_menu == False
+            elif self.load_pos[0] <= mouse_pos[0] <= self.load_pos[0] + self.button_width and \
+                self.load_pos[1] <= mouse_pos[1] <= self.load_pos[1] + self.button_height:
+                print("Loading the game...")
+                # Link to load the game
 
-                elif self.load_pos[0] <= mouse_pos[0] <= self.load_pos[0] + self.button_width and \
-                    self.load_pos[1] <= mouse_pos[1] <= self.load_pos[1] + self.button_height:
-                    print("Loading the game...")
-                    # Link to load the game
-                    self.running_menu == False
+            elif self.exit_pos[0] <= mouse_pos[0] <= self.exit_pos[0] + self.button_width and \
+                self.exit_pos[1] <= mouse_pos[1] <= self.exit_pos[1] + self.button_height:
+                print("Exiting the game...")
+                pygame.quit()
+                sys.exit()
 
-                elif self.exit_pos[0] <= mouse_pos[0] <= self.exit_pos[0] + self.button_width and \
-                    self.exit_pos[1] <= mouse_pos[1] <= self.exit_pos[1] + self.button_height:
-                    print("Exiting the game...")
-                    pygame.quit()
-                    sys.exit()
+
+
+
+
     
