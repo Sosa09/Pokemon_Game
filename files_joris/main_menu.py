@@ -1,5 +1,6 @@
 import pygame
 import sys
+from lab_oak import FirstGameScreen
 
 class Menu:
     def __init__(self, window_size):
@@ -75,13 +76,16 @@ class Menu:
             if self.start_pos[0] <= mouse_pos[0] <= self.start_pos[0] + self.button_width and \
                 self.start_pos[1] <= mouse_pos[1] <= self.start_pos[1] + self.button_height:
                 print("Starting the game...")
-                # Add your game start code here
+                # Link to start the game
+                startingup = FirstGameScreen(self.window_size)
+                startingup.game_loop()
             elif self.load_pos[0] <= mouse_pos[0] <= self.load_pos[0] + self.button_width and \
                 self.load_pos[1] <= mouse_pos[1] <= self.load_pos[1] + self.button_height:
                 print("Loading the game...")
-                # Add your game load code here
+                # Link to load the game
             elif self.exit_pos[0] <= mouse_pos[0] <= self.exit_pos[0] + self.button_width and \
                 self.exit_pos[1] <= mouse_pos[1] <= self.exit_pos[1] + self.button_height:
                 print("Exiting the game...")
                 pygame.quit()
                 sys.exit()
+    
