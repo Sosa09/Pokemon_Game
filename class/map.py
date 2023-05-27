@@ -22,7 +22,12 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-            
+                elif event.type == pygame.K_ESCAPE:
+                          # Create a font object
+                    font = pygame.font.SysFont("Arial", 30)
+                    text_surface = font.render(f"Battle Begins!\nTrainer: Ash ", True, (0, 0, 0))                # Position the text
+                    text_rect = text_surface.get_rect()
+                    text_rect.center = (400, 300)
             # check if the player collide with on of the elements
             for x in self.level.pokemons: 
                 if pygame.sprite.collide_rect(self.level.player, x):
@@ -59,7 +64,7 @@ class Game:
                 text_rect = text_surface.get_rect()
                 text_rect.center = (400, 300)
                 # Fill the background in white
-                self.screen.fill("white");
+                self.screen.fill("white")
                 # draw it on the screen
                 self.screen.blit(text_surface, text_rect)
            
@@ -70,7 +75,7 @@ class Game:
                     
                   
         except Exception as e:
-            print(e);
+            print(e)
 if __name__=='__main__':
     game = Game()
     game.run()
