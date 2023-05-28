@@ -12,7 +12,7 @@ class Game:
         self.clock = pygame.time.Clock()
         self.level = Level()
         self.groups = pygame.sprite.Group()
-        self.groups.add(self.level.pokemons)
+        self.groups.add(self.level.pokebag)
         
    
     def run(self):
@@ -24,7 +24,7 @@ class Game:
                     sys.exit()
             
             # check if the player collide with on of the elements
-            for x in self.level.pokemons: 
+            for x in self.level.pokebag: 
                 if pygame.sprite.collide_rect(self.level.player, x):
                     running = False
                     self.collidedItem = x
@@ -45,21 +45,21 @@ class Game:
                     if event.type == pygame.MOUSEBUTTONDOWN:
                         #remove element after it has collided
                         self.groups.remove(self.collidedItem)
-                        self.level.pokemons.remove(self.collidedItem)
+                        self.level.pokebag.remove(self.collidedItem)
                         # Update groups
-                        self.collidedItem.image = pygame.Surface((10,10))
+                        self.collidedItem.image = pygame.Surface((0,0))
                         self.groups.update()
                         battleState = False
                         self.run()
                 # Create a font object
-                font = pygame.font.SysFont("Arial", 30)
+                font = pygame.font.SysFont("Arial", 20)
 
                 # Render the text
-                text_surface = font.render(f"Battle Begins!\nTrainer: Ash VS {self.collidedItem.name}\nclick on the screen to go back", True, (0, 0, 0))                # Position the text
+                text_surface = font.render(f"You have found a {self.collidedItem.name}\nclick on the screen to go back", True, (240,255,255))                # Position the text
                 text_rect = text_surface.get_rect()
                 text_rect.center = (400, 300)
                 # Fill the background in white
-                self.screen.fill("white");
+                self.screen.fill("black")
                 # draw it on the screen
                 self.screen.blit(text_surface, text_rect)
            
@@ -70,7 +70,10 @@ class Game:
                     
                   
         except Exception as e:
-            print(e);
+            print(e)
+
+
+            
 if __name__=='__main__':
     game = Game()
     game.run()

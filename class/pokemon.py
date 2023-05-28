@@ -21,14 +21,16 @@ class Pokemon3(pygame.sprite.Sprite):
 
     def __init__(self, pos, groups):
         super().__init__(groups)
-        self.image = pygame.image.load('images/3.png').convert_alpha()
+        self.image = pygame.image.load('images/Pokemons/charmander.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
+        self.name = "charmander"
 
 class Pokemon4(pygame.sprite.Sprite):
 
     def __init__(self, pos, groups):
         super().__init__(groups)
-        self.image = pygame.image.load('images/4.png').convert_alpha()
+        self.image = pygame.image.load('images/Pokemons/eve.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
+        self.name = 'Evee'
         
         
