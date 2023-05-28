@@ -2,8 +2,9 @@ import pygame
 import sys
 from screen import Screen
 from button import Button
-# from lab_oak import FirstGameScreen
 from settings import Settings
+from intro import IntroVideo
+from lab_oak import FirstGameScreen
 
 # Menu screen class
 class MenuScreen(Screen):
@@ -27,6 +28,7 @@ class MenuScreen(Screen):
         button_width = 200
         button_height = 50
         total_buttons = 4
+
         # starting possition
         x = (width - (button_width * total_buttons + button_spacing * total_buttons)) // 2
         y = (height - 100) 
@@ -45,9 +47,9 @@ class MenuScreen(Screen):
                 if button_text == "play":
                     return FirstGameScreen()
                 elif button_text == "options":
-                    return "OptionsScreen() tbc"
+                    return FirstGameScreen()
                 elif button_text == "scores":
-                    return "ScoresScreen() tbc"
+                    return FirstGameScreen()
                 elif button_text == "exit":
                     pygame.quit()
                     sys.exit()

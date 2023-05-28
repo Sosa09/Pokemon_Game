@@ -1,10 +1,8 @@
 import pygame
 import sys
-from intro import IntroVideo
-from main_menu import Menu
-from lab_oak import FirstGameScreen
 from menuscreen import MenuScreen
 from settings import Settings
+from intro import IntroVideo
 
 def run_game():
     # Initialize Pygame
@@ -47,7 +45,5 @@ def run_game():
         pygame.display.flip()
 
 if __name__ == "__main__":
-#    pygame.init()
-#    intro = IntroVideo("files_joris\images\pokemon_intro.mp4", 800, 600)
-#    intro.play(163) # In seconds
+    #IntroVideo().play()
     run_game()
