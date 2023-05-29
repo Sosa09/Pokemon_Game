@@ -22,7 +22,17 @@ class Game:
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-            
+                elif event.type == pygame.K_ESCAPE:
+                          # Create a font object
+                    font = pygame.font.SysFont("Arial", 30)
+                    text_surface = font.render(f"Battle Begins!\nTrainer: Ash ", True, (0, 0, 0))                # Position the text
+                    text_rect = text_surface.get_rect()
+                    text_rect.center = (400, 300)
+            for button in self.buttons: # added by joris maar nog niet opp
+                if button.handle_event(event):
+                    button_text = button.text.lower()
+                    if button_text == "pause":
+                        running = False
             # check if the player collide with on of the elements
             for x in self.level.pokebag: 
                 if pygame.sprite.collide_rect(self.level.player, x):
@@ -31,6 +41,7 @@ class Game:
                     self._start_battle_loop()
             self.screen.fill('chartreuse4')
             self.level.run()
+            self.level.create_button() # added to show button on the screen
             pygame.display.update()
             self.clock.tick(FPS)
             
@@ -59,7 +70,8 @@ class Game:
                 text_rect = text_surface.get_rect()
                 text_rect.center = (400, 300)
                 # Fill the background in white
-                self.screen.fill("black")
+                self.screen.fill("white")
+
                 # draw it on the screen
                 self.screen.blit(text_surface, text_rect)
            
@@ -73,7 +85,7 @@ class Game:
             print(e)
 
 
-            
 if __name__=='__main__':
     game = Game()
     game.run()
+
