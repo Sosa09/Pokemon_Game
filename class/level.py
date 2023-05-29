@@ -18,13 +18,9 @@ class Level:
         #sprite group setup
         self.visible_sprites = YsortCameraGroup()
         self.obstacle_sprites = pygame.sprite.Group()
-        self.pokebag = []
+        self.pokemons = []
         self.create_map()
         # going to add a button to pause the game (added by Joris)  
-        self.font = pygame.font.SysFont(None, 30)
-        self.text_color = (255, 255, 255)
-        self.button_color = (50, 50, 50)
-        self.hover_color = (100, 100, 100)
         self.create_button()
         
        
@@ -45,24 +41,27 @@ class Level:
                 if col == 'g':
                     Grass((x,y),[self.visible_sprites])
                 if col == '1':
-                    self.pokebag.append(Pokemon1((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
                 if col == '2':
-                    self.pokebag.append(Pokemon2((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon2((x,y),[self.visible_sprites]))
                 if col == '3':
-                    self.pokebag.append(Pokemon3((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon3((x,y),[self.visible_sprites]))
                 if col == '4':
-                    self.pokebag.append(Pokemon4((x,y),[self.visible_sprites]))
-                if col == '5':
-                    self.pokebag.append(Pokeball((x,y),[self.visible_sprites]))
-                if col == 'p':
-                    self.pokebag.append(Potion((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon4((x,y),[self.visible_sprites]))
+                # if col == '5':
+                #     self.pokemons.append(Pokeball((x,y),[self.visible_sprites]))
+                # if col == 'p':
+                #     self.pokemons.append(Potion((x,y),[self.visible_sprites]))
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
-                if col == 'y':
-                    self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
+
     
     def create_button(self):
-        new_Button = Button(100, 100, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
+        font = pygame.font.SysFont(None, 30)
+        text_color = (255, 255, 255)
+        button_color = (50, 50, 50)
+        hover_color = (100, 100, 100)
+        new_Button = Button(100, 100, 200, 50, "Pause", font, text_color, button_color, hover_color)
         new_Button.draw(self.display_surface)            
                 
 

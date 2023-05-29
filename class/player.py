@@ -1,11 +1,10 @@
-# Created and managed by Tanguy
+# Created and managed by Tanguy, and partially Soufiane
 
 from trainer import Trainer
-
 class Player(Trainer):
 
     def __init__(self, pos,groups,obstacle_sprites):
-        super().__init__(self,groups)
+        super().__init__(groups)
         self.image = self.pygame.image.load('Images/Trainers/ash.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
         self.direction = self.pygame.math.Vector2()
@@ -27,7 +26,6 @@ class Player(Trainer):
                         self.rect.bottom = sprite.rect.top
                     if self.direction.y < 0: #moving up
                         self.rect.top = sprite.rect.bottom
-
 
     def input(self):
         keys = self.pygame.key.get_pressed()
