@@ -23,6 +23,7 @@ class Pokemon3(pygame.sprite.Sprite):
         super().__init__(groups)
         self.image = pygame.image.load('Images/3.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
+        self.name = "poesje"
 
 class Pokemon4(pygame.sprite.Sprite):
 
@@ -30,5 +31,6 @@ class Pokemon4(pygame.sprite.Sprite):
         super().__init__(groups)
         self.image = pygame.image.load('Images/4.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
+        self.name = "ratje"
         
         

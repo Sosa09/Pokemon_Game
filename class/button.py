@@ -1,3 +1,4 @@
+#created, maintained by Joris
 import pygame
 
 class Button:

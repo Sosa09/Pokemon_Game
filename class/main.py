@@ -1,3 +1,4 @@
+#created, maintained by Joris
 import pygame
 import sys
 from menuscreen import MenuScreen

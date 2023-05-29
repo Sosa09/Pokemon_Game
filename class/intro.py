@@ -1,5 +1,5 @@
+#created, maintained by Joris
 import pygame
-import sys
 from moviepy.editor import VideoFileClip
 from settings import Settings
 

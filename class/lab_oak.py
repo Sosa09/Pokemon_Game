@@ -1,3 +1,4 @@
+#created, maintained by Joris
 import pygame
 from screen import Screen
 from settings import Settings

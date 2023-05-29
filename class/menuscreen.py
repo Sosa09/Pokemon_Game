@@ -5,6 +5,7 @@ from button import Button
 from settings import Settings
 from intro import IntroVideo
 from lab_oak import FirstGameScreen
+from map import Game
 
 # Menu screen class
 class MenuScreen(Screen):
@@ -45,7 +46,8 @@ class MenuScreen(Screen):
             if button.handle_event(event):
                 button_text = button.text.lower()
                 if button_text == "play":
-                    return FirstGameScreen()
+                    # return FirstGameScreen()  # should be
+                    return Game().run()
                 elif button_text == "options":
                     return FirstGameScreen()
                 elif button_text == "scores":
