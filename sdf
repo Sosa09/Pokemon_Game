@@ -1,0 +1,342 @@
+[33mcommit a74c86766c896c4cfcfa633526877826c20dbddd[m[33m ([m[1;36mHEAD -> [m[1;32mmain[m[33m)[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Mon May 29 14:30:47 2023 +0200
+
+    reverting
+
+[33mcommit b9e69270f317b925230bff625b209a1faea0e144[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m
+Merge: b71a738 3c735b6
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Mon May 29 14:08:30 2023 +0200
+
+    Merge branch 'main' of https://github.com/Sosa09/Pokemon_Game
+
+[33mcommit b71a73881095f3c14273e3b0199aaeb666fce026[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Mon May 29 14:06:47 2023 +0200
+
+    battle class created. function start battle implemented
+
+[33mcommit 3c735b661a2bca53344fa2017c8ef5b200b8377a[m
+Merge: d5ce8d4 065f9d5
+Author: Sosa09 <81185618+Sosa09@users.noreply.github.com>
+Date:   Mon May 29 14:05:57 2023 +0200
+
+    Merge pull request #4 from Sosa09/tanguy
+    
+    update with potions and pokeballs
+
+[33mcommit 065f9d508ba66d3608a9adae14236c88ffd5a05c[m[33m ([m[1;31morigin/tanguy[m[33m)[m
+Merge: 5391f32 d5ce8d4
+Author: Sosa09 <81185618+Sosa09@users.noreply.github.com>
+Date:   Mon May 29 14:05:48 2023 +0200
+
+    Merge branch 'main' into tanguy
+
+[33mcommit d5ce8d42fb90307986a3b841b6c81589916a6e24[m
+Merge: a473b06 4f6d625
+Author: Sosa09 <81185618+Sosa09@users.noreply.github.com>
+Date:   Mon May 29 14:02:03 2023 +0200
+
+    Merge pull request #3 from Sosa09/Jorisv1
+    
+    Jorisv1
+
+[33mcommit 4f6d625c224f78ec247d44492857d1883c310ed4[m[33m ([m[1;31morigin/Jorisv1[m[33m)[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Mon May 29 13:11:36 2023 +0200
+
+    making a pause button
+
+[33mcommit cc2dd65a1853b276981a7e0600935322fc4abf87[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Mon May 29 12:20:12 2023 +0200
+
+    added my part and integrated it
+
+[33mcommit 066467c3e3ed1a1f5e19aba8ab9d99ade3f79c57[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Mon May 29 11:48:25 2023 +0200
+
+    changed files
+
+[33mcommit a7d95cfadd0d582cf50bef19eae99b1216187ae4[m
+Merge: 4ac3a49 a473b06
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Mon May 29 11:43:19 2023 +0200
+
+    Merge branch 'jorisinsertinfo' into Jorisv1
+
+[33mcommit 4ac3a49c49d3dcc70ee73a738ed7409e7f007a6c[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Mon May 29 11:16:17 2023 +0200
+
+    remove absolute info
+
+[33mcommit 828eff91784177ee20bff281a5077d4f65eb3948[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Sun May 28 11:38:24 2023 +0200
+
+    screen changes impemented with intro
+
+[33mcommit 5391f320d7f25e913abe6285c204b539600dd154[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun May 28 09:17:38 2023 +0200
+
+    update with potions and pokeballs
+
+[33mcommit ce51fa5379090f0d9ac4410b769b864ae035871f[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Sat May 27 23:21:46 2023 +0200
+
+    working with multi screens
+
+[33mcommit 0aa57d880fd1b68cad2dbc4402b628ab05966cc7[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Sat May 27 14:05:31 2023 +0200
+
+    testing
+
+[33mcommit 5749a52bf55bd96212d159d75c601c269d3d8c15[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Sat May 27 11:46:19 2023 +0200
+
+    latest version
+
+[33mcommit 36e0cdfdc8c3ba5f48fdb6658e8db4eb53414e1a[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Sat May 27 08:22:45 2023 +0200
+
+    map.py renamed game.py
+
+[33mcommit a473b066fb59992cdc15ab99238f5c042809a83d[m[33m ([m[1;31morigin/jorisinsertinfo[m[33m)[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Sat May 27 07:31:12 2023 +0200
+
+    Added DB, renamed folder as per namingconvention,
+
+[33mcommit c8d11d3c6f3fd13ee168fab0cb89d6362f7b59d1[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Thu May 25 21:41:22 2023 +0200
+
+    collision, battleBegin,
+
+[33mcommit cba20b51bdd5402e816f8fb00a71b042b6595269[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Thu May 25 21:25:42 2023 +0200
+
+    commit
+
+[33mcommit 4b7c08430210ff57253caf01917ea7669abdb61a[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Thu May 25 20:16:57 2023 +0200
+
+    collision works
+
+[33mcommit 250eede0cfb82cf4689be79fcd47ed1b553263d0[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun May 21 14:22:03 2023 +0200
+
+    update21/6
+
+[33mcommit 61207a395f2046c404b4d96dab19d79198f40888[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun May 21 14:09:28 2023 +0200
+
+    update
+
+[33mcommit b27228a6605a8023b124608a43d79f688b747c53[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Thu May 18 21:04:37 2023 +0200
+
+    changed main menu class so the event is in the class itself. This to keep the main clear
+
+[33mcommit 5997372cf699145fde61f7bff54a289bf75c43e9[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Thu May 18 20:38:44 2023 +0200
+
+    nothing
+
+[33mcommit 731d70898e16b514297663769365ce12a2d9edb6[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Thu May 18 20:35:22 2023 +0200
+
+    lab_oak added just the start of it
+
+[33mcommit c79ca188a8693bf696585ed8d3ead55fb81b3484[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Sat May 13 13:36:35 2023 +0200
+
+     deleted some stuff
+
+[33mcommit 153e7e2f29722ff07e2d2f01a033b93b14d620b8[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Sat May 13 13:31:08 2023 +0200
+
+    refactoring
+
+[33mcommit 08da599a06f56d90d597f7aaae5036bb94a1f706[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Fri May 12 20:57:59 2023 +0200
+
+    added an intro
+
+[33mcommit 74325d590e6c887366044814697902759da89966[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Tue May 9 21:57:14 2023 +0200
+
+    menu is up and running
+
+[33mcommit 2718f467c2197bf995cccfa92c442e1450bbb6a0[m
+Merge: e9fd5f6 76513c7
+Author: Sosa09 <81185618+Sosa09@users.noreply.github.com>
+Date:   Tue Apr 18 21:41:42 2023 +0200
+
+    Merge pull request #2 from Sosa09/Tanguy
+    
+    Tanguy
+
+[33mcommit 76513c74fdf6217b140f58bb9e0e0678d81eeaee[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sat Feb 25 11:20:39 2023 +0100
+
+    collisions
+
+[33mcommit 333cdf23048cc097be19b628a3dfc18b2b1bc321[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sat Feb 25 11:20:02 2023 +0100
+
+    update with collisions
+
+[33mcommit b830b828978bfc53c841dfbe130e4eba9d14d77d[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 21 17:24:53 2023 +0100
+
+    update 10
+
+[33mcommit 6b4738d194249e494fa59adba0754155a7a784e8[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun Feb 19 14:58:58 2023 +0100
+
+    update6
+
+[33mcommit defbcffff8cede2d0f9d0f4c693f765b5ccd2ba3[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun Feb 19 11:40:04 2023 +0100
+
+    updated5 with 4 pokemon on map
+
+[33mcommit a51f1f14389e32d54687c01aa922fdcf1162245c[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun Feb 19 11:10:22 2023 +0100
+
+    update4
+
+[33mcommit 1015e86188250b0f8bac66128c7a6ee8cb63cb2a[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun Feb 19 11:02:03 2023 +0100
+
+    update3
+
+[33mcommit 7ab98d9563c60d98fa9d5135808c523356251c5d[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sun Feb 19 11:00:38 2023 +0100
+
+    update2
+
+[33mcommit ad1d790ca1eeab825a4372c541d8a42d7b274a51[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Sat Feb 18 19:45:00 2023 +0100
+
+    black map
+
+[33mcommit e9fd5f62fd4fd4e2c143bc5d09ef7a43213ae1e3[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 20:34:40 2023 +0100
+
+    start
+
+[33mcommit de4bd1538dcf251c3cfc4c7b91e8ef29ce1f8936[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 20:26:41 2023 +0100
+
+    new
+
+[33mcommit cd3c58141d1b8f0883b091e6d3699f0341e89f91[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 20:20:14 2023 +0100
+
+    start
+
+[33mcommit 1da9a42d2b14b982156cbf0e3be5ace750a9985f[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 20:17:39 2023 +0100
+
+    NEW
+
+[33mcommit d7c849503b8017fecc8b6cfccbe29da0e6649221[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 20:13:28 2023 +0100
+
+    eindwerk
+
+[33mcommit 4306bcdb997f6479eb6e2ca86aaa5eb19dee4c03[m
+Merge: 07a665e 073fc83
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Tue Feb 14 20:09:19 2023 +0100
+
+    Merge branch 'main' of https://github.com/Sosa09/Pokemon_Game
+
+[33mcommit 07a665e2b039d10d79fd2351742dae45fc70e4ec[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Tue Feb 14 20:05:03 2023 +0100
+
+    tekst toegevoegd
+
+[33mcommit 073fc834a8bc4969b96cfc3f7c66a078c0dc29b3[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 20:05:01 2023 +0100
+
+    Start_eindwerk
+
+[33mcommit 3e40c97996bb1876a843d2a75f165809e7eda1cd[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Tue Feb 14 20:02:32 2023 +0100
+
+    added
+
+[33mcommit e10888519e309945a892ebd36bd327fc7db80961[m
+Author: Joris Ceuppens <jorisc50@gmail.com>
+Date:   Tue Feb 14 20:01:52 2023 +0100
+
+    commentaar pokemontje - Pokemon()
+
+[33mcommit a3916235e1f47c52d2f3debe102d91d106e8ff3c[m
+Author: Sosa09 <81185618+Sosa09@users.noreply.github.com>
+Date:   Tue Feb 14 19:50:52 2023 +0100
+
+    Create Game.py
+
+[33mcommit 5d1dfa5b23d14dd94e43cb0cdffccc6ae67f48d3[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Tue Feb 14 19:50:31 2023 +0100
+
+    removed all
+
+[33mcommit 2bc286778cf480aef3fa6fbb287e1bda20c5459c[m
+Author: K4LM4 <croonenburg.co@gmail.com>
+Date:   Tue Feb 14 19:40:07 2023 +0100
+
+    blabla
+
+[33mcommit a55ac3d13b08b902c9f791e4fd542e6ccc5fef83[m
+Author: Sosa09 <soufiane.arrazouki@hotmail.com>
+Date:   Tue Feb 14 19:37:28 2023 +0100
+
+    added
+
+[33mcommit 00016018fcbef62f8f058c54926543b8b7311feb[m
+Author: Sosa09 <81185618+Sosa09@users.noreply.github.com>
+Date:   Tue Feb 14 19:25:30 2023 +0100
+
+    Initial commit
