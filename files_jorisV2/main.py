@@ -3,6 +3,7 @@ import sys
 from menuscreen import MenuScreen
 from settings import Settings
 from intro import IntroVideo
+from lab_oak import FirstGameScreen
 
 def run_game():
     # Initialize Pygame
@@ -43,6 +44,19 @@ def run_game():
 
         # Update the display
         pygame.display.flip()
+
+        # Check if the current screen is the game screen
+        if isinstance(current_screen, FirstGameScreen):
+            # Check the current state of keyboard keys
+            keys = pygame.key.get_pressed()
+            if keys[pygame.K_LEFT]:
+                current_screen.player_x -= current_screen.player_speed
+            if keys[pygame.K_RIGHT]:
+                current_screen.player_x += current_screen.player_speed
+            if keys[pygame.K_UP]:
+                current_screen.player_y -= current_screen.player_speed
+            if keys[pygame.K_DOWN]:
+                current_screen.player_y += current_screen.player_speed
 
 if __name__ == "__main__":
     #IntroVideo().play()
