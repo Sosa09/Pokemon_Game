@@ -1,3 +1,4 @@
+# Created and managed by Soufiane
 import pygame
 
 class Pokemon1(pygame.sprite.Sprite):

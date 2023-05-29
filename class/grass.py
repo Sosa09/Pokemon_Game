@@ -1,4 +1,4 @@
-
+# Created and managed by Tanguy
 import pygame
 
 class Grass(pygame.sprite.Sprite):

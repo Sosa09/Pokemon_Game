@@ -1,3 +1,4 @@
+# created and managed by Tanguy
 import pygame
 from settings import  *
 from tile import Tile
@@ -41,6 +42,8 @@ class Level:
                 if col == '4':
                     self.pokemons.append(Pokemon4((x,y),[self.visible_sprites]))
                 if col == 'z':
+                    self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
+                if col == 'y':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
                     
                 

@@ -10,8 +10,9 @@
             "Sp. Attack": 65,
             "Sp. Defense": 65,
             "Speed": 45,
-            "Image": "Images/Pokemons/bulbasaur0.png"
-
+            "Image": "Images/Pokemons/bulbasaur0.png",
+            "AttackImage": "PATH",
+            "Sp Attack":
         },
         {
             "name": "Ivysaur",

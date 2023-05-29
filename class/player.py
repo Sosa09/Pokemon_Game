@@ -1,13 +1,14 @@
-import pygame
-from settings import *
+# Created and managed by Tanguy
 
-class Player(pygame.sprite.Sprite):
+from trainer import Trainer
 
-    def __init__(self, pos, groups,obstacle_sprites):
-        super().__init__(groups)
-        self.image = pygame.image.load('Images/Trainers/ash.png').convert_alpha()
+class Player(Trainer):
+
+    def __init__(self, pos,groups,obstacle_sprites):
+        super().__init__(self,groups)
+        self.image = self.pygame.image.load('Images/Trainers/ash.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
-        self.direction = pygame.math.Vector2()
+        self.direction = self.pygame.math.Vector2()
         self.speed = 5
         self.obstacle_sprites = obstacle_sprites
 
@@ -29,17 +30,17 @@ class Player(pygame.sprite.Sprite):
 
 
     def input(self):
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_UP]:
+        keys = self.pygame.key.get_pressed()
+        if keys[self.pygame.K_UP]:
             self.direction.y = -1
-        elif keys[pygame.K_DOWN]:
+        elif keys[self.pygame.K_DOWN]:
             self.direction.y = 1
         else:
             self.direction.y = 0
         
-        if keys[pygame.K_RIGHT]:
+        if keys[self.pygame.K_RIGHT]:
             self.direction.x = 1
-        elif keys[pygame.K_LEFT]:
+        elif keys[self.pygame.K_LEFT]:
             self.direction.x = -1
         else:
             self.direction.x = 0

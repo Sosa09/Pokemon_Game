@@ -1,3 +1,4 @@
+# Created and managed by Tanguy
 import pygame
 from settings import *
 
