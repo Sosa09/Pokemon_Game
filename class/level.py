@@ -4,7 +4,10 @@ from tile import Tile
 from grass import Grass
 from pokemon import *
 from player import Player
+from pokeball import Pokeball
+from potion import Potion
 from button import Button
+
 
 class Level:
 
@@ -14,7 +17,7 @@ class Level:
         #sprite group setup
         self.visible_sprites = YsortCameraGroup()
         self.obstacle_sprites = pygame.sprite.Group()
-        self.pokemons = []
+        self.pokebag = []
         self.create_map()
         # going to add a button to pause the game (added by Joris)  
         self.font = pygame.font.SysFont(None, 30)
@@ -41,13 +44,17 @@ class Level:
                 if col == 'g':
                     Grass((x,y),[self.visible_sprites])
                 if col == '1':
-                    self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
+                    self.pokebag.append(Pokemon1((x,y),[self.visible_sprites]))
                 if col == '2':
-                    self.pokemons.append(Pokemon2((x,y),[self.visible_sprites]))
+                    self.pokebag.append(Pokemon2((x,y),[self.visible_sprites]))
                 if col == '3':
-                    self.pokemons.append(Pokemon3((x,y),[self.visible_sprites]))
+                    self.pokebag.append(Pokemon3((x,y),[self.visible_sprites]))
                 if col == '4':
-                    self.pokemons.append(Pokemon4((x,y),[self.visible_sprites]))
+                    self.pokebag.append(Pokemon4((x,y),[self.visible_sprites]))
+                if col == '5':
+                    self.pokebag.append(Pokeball((x,y),[self.visible_sprites]))
+                if col == 'p':
+                    self.pokebag.append(Potion((x,y),[self.visible_sprites]))
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
     
