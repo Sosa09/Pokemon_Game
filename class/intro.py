@@ -9,7 +9,7 @@ from settings import Settings
 class IntroVideo:
     def __init__(self):
         self.clock = pygame.time.Clock()
-        self.video_path = "files_jorisV2\images\pokemon_intro.mp4"
+        self.video_path = "images\Intro\pokemon_intro.mp4"
 
     def play(self):
         # Initialize Pygame

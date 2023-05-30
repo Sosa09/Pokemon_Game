@@ -1,6 +1,7 @@
 import pygame, sys
 from settings import *
 from level import Level
+from button import Button
 
 class Game:
 
@@ -13,10 +14,19 @@ class Game:
         self.level = Level()
         self.groups = pygame.sprite.Group()
         self.groups.add(self.level.pokemons)
+
+        # going to add a button to pause the game (added by Joris)  
+        self.font = pygame.font.SysFont(None, 30)
+        self.text_color = (255, 255, 255)
+        self.button_color = (50, 50, 50)
+        self.hover_color = (100, 100, 100)
+        self.new_button = Button(100, 100, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
+        #self.create_button()
         
    
     def run(self):
         running = True
+        event = None  # Add this line to define a default value for event
         while running:
             for event in pygame.event.get():
                 if event.type == pygame.QUIT:
@@ -28,11 +38,12 @@ class Game:
                     text_surface = font.render(f"Battle Begins!\nTrainer: Ash ", True, (0, 0, 0))                # Position the text
                     text_rect = text_surface.get_rect()
                     text_rect.center = (400, 300)
-            for button in self.buttons: # added by joris maar nog niet opp
-                if button.handle_event(event):
-                    button_text = button.text.lower()
-                    if button_text == "pause":
-                        running = False
+            
+            # Handle button events
+            self.new_button.handle_event(event)
+            if self.new_button.handle_event(event):
+                running = not running
+
             # check if the player collide with on of the elements
             for x in self.level.pokemons: 
                 if pygame.sprite.collide_rect(self.level.player, x):
@@ -41,7 +52,9 @@ class Game:
                     self._start_battle_loop()
             self.screen.fill('chartreuse4')
             self.level.run()
-            self.level.create_button() # added to show button on the screen
+
+            self.new_button.draw(self.screen) # added to show button on the screen (Added by Joris)
+            
             pygame.display.update()
             self.clock.tick(FPS)
             

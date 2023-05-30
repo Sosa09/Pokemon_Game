@@ -12,11 +12,12 @@ class Button:
         self.hovered = False
 
     def handle_event(self, event):
-        if event.type == pygame.MOUSEMOTION:
-            self.hovered = self.rect.collidepoint(event.pos)
-        elif event.type == pygame.MOUSEBUTTONDOWN:
-            if self.hovered:
-                return True
+        if event is not None:
+            if event.type == pygame.MOUSEMOTION:
+                self.hovered = self.rect.collidepoint(event.pos)
+            elif event.type == pygame.MOUSEBUTTONDOWN:
+                if self.hovered:
+                    return True
         return False
 
     def draw(self, surface):

@@ -4,7 +4,7 @@ from tile import Tile
 from grass import Grass
 from pokemon import *
 from player import Player
-from button import Button
+# from button import Button
 
 class Level:
 
@@ -16,14 +16,8 @@ class Level:
         self.obstacle_sprites = pygame.sprite.Group()
         self.pokemons = []
         self.create_map()
-        # going to add a button to pause the game (added by Joris)  
-        self.font = pygame.font.SysFont(None, 30)
-        self.text_color = (255, 255, 255)
-        self.button_color = (50, 50, 50)
-        self.hover_color = (100, 100, 100)
-        self.create_button()
-        
-       
+
+           
 
     def run(self):
         #update
@@ -50,10 +44,7 @@ class Level:
                     self.pokemons.append(Pokemon4((x,y),[self.visible_sprites]))
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
-    
-    def create_button(self):
-        new_Button = Button(100, 100, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
-        new_Button.draw(self.display_surface)            
+           
                 
 
 class YsortCameraGroup(pygame.sprite.Group):
