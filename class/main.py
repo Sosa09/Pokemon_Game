@@ -6,6 +6,7 @@ from settings import Settings
 from intro import IntroVideo
 from lab_oak import FirstGameScreen
 
+
 def run_game():
     # Initialize Pygame
     pygame.init()
@@ -60,5 +61,5 @@ def run_game():
                 current_screen.player_y += current_screen.player_speed
 
 if __name__ == "__main__":
-    #IntroVideo().play()
+    IntroVideo().play()
     run_game()

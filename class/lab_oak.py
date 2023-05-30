@@ -1,43 +1,107 @@
 #created, maintained by Joris
 import pygame
+import sys
+from button import Button
 from screen import Screen
-from settings import Settings
+from level_lab_oak import LevelLabOak
+from settings_lab_oak import *
 
 class FirstGameScreen(Screen):
     def __init__(self):
         super().__init__()
+        #de Basics
+        pygame.init()
+        self.screen = pygame.display.set_mode((WIDTH,HEIGTH))
+        pygame.display.set_caption('Oak\'s lab')
+        self.clock = pygame.time.Clock()
+        self.level = LevelLabOak()
+        self.groups = pygame.sprite.Group()
+        self.groups.add(self.level.pokemons)
+
+        # going to add a button to pause the game (added by Joris)  
+        self.font = pygame.font.SysFont(None, 30)
+        self.text_color = (255, 255, 255)
+        self.button_color = (50, 50, 50)
+        self.hover_color = (100, 100, 100)
+        self.new_button = Button(100, 100, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
+
         # Load the player character image
         self.player_image = pygame.image.load("images\player.png")
 
-        # get screen settings from settings class
-        screen_settings = Settings()
-        self.width = screen_settings.get_screen_width()
-        self.height = screen_settings.get_screen_height()
+    def run(self):
+        running = True
+        event = None  # Add this line to define a default value for event
+        while running:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    sys.exit()
 
-        # Get the dimensions of the player image
-        self.player_width = self.player_image.get_width()
-        self.player_height = self.player_image.get_height()
+                elif event.type == pygame.K_ESCAPE:
+                          # Create a font object
+                    font = pygame.font.SysFont("Arial", 30)
+                    text_surface = font.render(f"Battle Begins!\nTrainer: Ash ", True, (0, 0, 0))                # Position the text
+                    text_rect = text_surface.get_rect()
+                    text_rect.center = (400, 300)
+            
+            # Handle button events
+            self.new_button.handle_event(event)
+            if self.new_button.handle_event(event):
+                running = not running
 
-        # Set the initial position of the player
-        self.player_x = (self.width - self.player_width) // 2
-        self.player_y = (self.height - self.player_height)
+            # check if the player collide with on of the elements
+            for x in self.level.pokemons: 
+                if pygame.sprite.collide_rect(self.level.player, x):
+                    running = False
+                    self.collidedItem = x
+                    self._start_battle_loop()
+            self.screen.fill('chartreuse4')
+            self.level.run()
 
-        # Variables to store previous player position
-        self.previous_player_x = self.player_x
-        self.previous_player_y = self.player_y
+            self.new_button.draw(self.screen) # added to show button on the screen (Added by Joris)
+            
+            pygame.display.update()
+            self.clock.tick(FPS)
+            
+    def _start_battle_loop(self):
+          # begin battle
+        battleState = True
+        try:
+            while(battleState): 
+                for event in pygame.event.get():
+                    if event.type == pygame.QUIT:
+                        battleState = False
+                    if event.type == pygame.MOUSEBUTTONDOWN:
+                        #remove element after it has collided
+                        self.groups.remove(self.collidedItem)
+                        self.level.pokemons.remove(self.collidedItem)
+                        # Update groups
+                        self.collidedItem.image = pygame.Surface((10,10))
+                        self.groups.update()
+                        battleState = False
+                        self.run()
+                # Create a font object
+                font = pygame.font.SysFont("Arial", 30)
 
-        # List of obstacles
-        self.obstacles = []
+                # Render the text
+                text_surface = font.render(f"Battle Begins!\nTrainer: Ash VS {self.collidedItem.name}\nclick on the screen to go back", True, (0, 0, 0))                # Position the text
+                text_rect = text_surface.get_rect()
+                text_rect.center = (400, 300)
+                # Fill the background in white
+                self.screen.fill("white")
+                # draw it on the screen
+                self.screen.blit(text_surface, text_rect)
+           
+                #update the display
+                pygame.display.update()
+            
+                  
+        except Exception as e:
+            print(e)
 
-        # Define obstacles
-        obstacle1 = pygame.Rect(788, 230, 287, 70)
-        self.obstacles.append(obstacle1)
 
-        # Color for obstacle visualization
-        self.obstacle_color = (255, 0, 0)  # Red
 
-        # Set the speed of the player movement
-        self.player_speed = 5
+    
 
     def draw(self, screen):
         # Load the background image
@@ -47,42 +111,4 @@ class FirstGameScreen(Screen):
         background_image = pygame.transform.scale(background_image, (self.width, self.height))
         screen.blit(background_image, (0, 0))
 
-        # Draw the player image on the screen
-        screen.blit(self.player_image, (self.player_x, self.player_y))
-
-        # Drawing a rectangle over the player for collision detection
-        player_rect = pygame.Rect(self.player_x, self.player_y, self.player_width, self.player_height)
-
-        # Draw the obstacle rectangles and check for collision
-        for obstacle in self.obstacles:
-            pygame.draw.rect(screen, self.obstacle_color, obstacle)
-            if player_rect.colliderect(obstacle):
-                # Prevent player movement or move the player back to the previous position
-                self.player_x = self.previous_player_x
-                self.player_y = self.previous_player_y
-
-    def handle_events(self, event):
-        if event.type == pygame.KEYDOWN:
-            if event.key == pygame.K_LEFT:
-                self.previous_player_x = self.player_x  # Store the previous position
-                self.player_x -= self.player_speed
-            elif event.key == pygame.K_RIGHT:
-                self.previous_player_x = self.player_x  # Store the previous position
-                self.player_x += self.player_speed
-            elif event.key == pygame.K_UP:
-                self.previous_player_y = self.player_y  # Store the previous position
-                self.player_y -= self.player_speed
-            elif event.key == pygame.K_DOWN:
-                self.previous_player_y = self.player_y  # Store the previous position
-                self.player_y += self.player_speed
-        
-        # here to calculate the obstacles
-        if event.type == pygame.MOUSEBUTTONDOWN:
-            if event.button == 1:  # Left mouse button
-                # Handle left mouse button click
-                print("Left mouse button clicked at", event.pos)
-            elif event.button == 3:  # Right mouse button
-                # Handle right mouse button click
-                print("Right mouse button clicked at", event.pos)
-
-        return self
+    

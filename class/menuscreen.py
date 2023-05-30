@@ -34,7 +34,7 @@ class MenuScreen(Screen):
         x = (width - (button_width * total_buttons + button_spacing * total_buttons)) // 2
         y = (height - 100) 
 
-        button_texts = ["Play", "Options", "Scores", "Exit"]
+        button_texts = ["Play Oak's Lab", "Play Wilderness", "Team info", "Exit"]
         for i, text in enumerate(button_texts):
             button_x = x + ((i * button_width) * 1.15)
             button = Button(button_x, y, button_width, button_height, text,
@@ -45,12 +45,11 @@ class MenuScreen(Screen):
         for button in self.buttons:
             if button.handle_event(event):
                 button_text = button.text.lower()
-                if button_text == "play":
-                    # return FirstGameScreen()  # should be
+                if button_text == "play oak's lab":
+                    return FirstGameScreen().run()
+                elif button_text == "play wilderness":
                     return Game().run()
-                elif button_text == "options":
-                    return FirstGameScreen()
-                elif button_text == "scores":
+                elif button_text == "team info":
                     return FirstGameScreen()
                 elif button_text == "exit":
                     pygame.quit()

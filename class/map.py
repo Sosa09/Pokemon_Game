@@ -9,7 +9,7 @@ class Game:
         #de Basics
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH,HEIGTH))
-        pygame.display.set_caption('POKEMON SYNTRA')
+        pygame.display.set_caption('Open map')
         self.clock = pygame.time.Clock()
         self.level = Level()
         self.groups = pygame.sprite.Group()
