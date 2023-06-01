@@ -41,17 +41,17 @@ class Level:
                 if col == 'g':
                     Grass((x,y),[self.visible_sprites])
                 if col == '1':
-                    self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Bulbasaur", "Images/Pokemons/bulbasaur0.png"))
                 if col == '2':
-                    self.pokemons.append(Pokemon2((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Charmander", "Images/Pokemons/charmander.png"))
                 if col == '3':
-                    self.pokemons.append(Pokemon3((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Squirtle", "Images/Pokemons/squirtle.png"))
                 if col == '4':
-                    self.pokemons.append(Pokemon4((x,y),[self.visible_sprites]))
-                # if col == '5':
-                #     self.pokemons.append(Pokeball((x,y),[self.visible_sprites]))
-                # if col == 'p':
-                #     self.pokemons.append(Potion((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Eve", "Images/Pokemons/eve.png"))
+                if col == '5':
+                    self.pokeball = Pokeball((x,y),[self.visible_sprites])
+                if col == 'p':
+                    self.potion = Potion((x,y),[self.visible_sprites])
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
 
