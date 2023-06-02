@@ -1,7 +1,7 @@
 import pygame
 from settings_lab_oak import  *
-from tile import Tile
-from pokemon import *
+from lab_oak_tile import LabOakTile
+from lab_oak_pokemon import *
 from player import Player
 # from button import Button
 
@@ -12,18 +12,16 @@ class LevelLabOak:
         self.display_surface = pygame.display.get_surface()
         
         #sprite group setup
-        self.visible_sprites = YsortCameraGroup()
+        self.visible_sprites = pygame.sprite.Group()
         self.obstacle_sprites = pygame.sprite.Group()
         self.pokemons = []
-        
-
         self.create_map()
 
            
 
     def run(self):
         #update
-        self.visible_sprites.custom_draw(self.player)
+        self.visible_sprites.draw(self.display_surface)
         self.visible_sprites.update()
 
 
@@ -33,7 +31,7 @@ class LevelLabOak:
                 x = col_index * TILESIZE
                 y = row_index * TILESIZE
                 if col == 'x':
-                    Tile((x,y),[self.visible_sprites,self.obstacle_sprites])
+                    LabOakTile((x,y),[self.visible_sprites,self.obstacle_sprites])
                 if col == '1':
                     self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
                 if col == '2':
@@ -50,7 +48,6 @@ class YsortCameraGroup(pygame.sprite.Group):
 
     def custom_draw(self, player):
         for sprite in self.sprites():
-            offset_pos = sprite.rect.topleft - self.offset
-            self.display_surface.blit(sprite.image,offset_pos)
+            self.display_surface.blit(sprite.image)
            
                 

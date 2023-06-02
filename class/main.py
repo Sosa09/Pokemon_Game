@@ -61,5 +61,5 @@ def run_game():
                 current_screen.player_y += current_screen.player_speed
 
 if __name__ == "__main__":
-    IntroVideo().play()
+    #IntroVideo().play()
     run_game()

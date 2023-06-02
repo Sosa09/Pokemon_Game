@@ -2,13 +2,11 @@
 import pygame
 import sys
 from button import Button
-from screen import Screen
 from level_lab_oak import LevelLabOak
 from settings_lab_oak import *
 
-class FirstGameScreen(Screen):
+class FirstGameScreen():
     def __init__(self):
-        super().__init__()
         #de Basics
         pygame.init()
         self.screen = pygame.display.set_mode((WIDTH,HEIGTH))
@@ -17,14 +15,19 @@ class FirstGameScreen(Screen):
         self.level = LevelLabOak()
         self.groups = pygame.sprite.Group()
         self.groups.add(self.level.pokemons)
+        
+        #background
+        self.draw(self.screen)
 
         # going to add a button to pause the game (added by Joris)  
         self.font = pygame.font.SysFont(None, 30)
         self.text_color = (255, 255, 255)
         self.button_color = (50, 50, 50)
         self.hover_color = (100, 100, 100)
-        self.new_button = Button(100, 100, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
+        self.new_button = Button(100, 50, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
 
+
+            
         # Load the player character image
         self.player_image = pygame.image.load("images\player.png")
 
@@ -41,8 +44,10 @@ class FirstGameScreen(Screen):
                           # Create a font object
                     font = pygame.font.SysFont("Arial", 30)
                     text_surface = font.render(f"Battle Begins!\nTrainer: Ash ", True, (0, 0, 0))                # Position the text
-                    text_rect = text_surface.get_rect()
-                    text_rect.center = (400, 300)
+                    #text_rect = text_surface.get_rect()
+                    #text_rect.center = (400, 300)
+                
+                
             
             # Handle button events
             self.new_button.handle_event(event)
@@ -55,9 +60,10 @@ class FirstGameScreen(Screen):
                     running = False
                     self.collidedItem = x
                     self._start_battle_loop()
-            self.screen.fill('chartreuse4')
+                    #background
+            self.draw(self.screen)
             self.level.run()
-
+            
             self.new_button.draw(self.screen) # added to show button on the screen (Added by Joris)
             
             pygame.display.update()
@@ -108,7 +114,7 @@ class FirstGameScreen(Screen):
         background_image = pygame.image.load("images\oak.png")
         
         # Scale the background image to fit the game screen
-        background_image = pygame.transform.scale(background_image, (self.width, self.height))
+        background_image = pygame.transform.scale(background_image, (WIDTH, HEIGTH))
         screen.blit(background_image, (0, 0))
 
     
