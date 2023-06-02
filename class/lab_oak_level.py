@@ -20,8 +20,12 @@ class LevelLabOak:
            
 
     def run(self):
-        #update
-        self.visible_sprites.draw(self.display_surface)
+        for sprite in self.visible_sprites:
+            if isinstance(sprite, LabOakTile):
+                continue  # Skip drawing LabOakTile objects (had error bc lab_oak_tile had no more image)
+            if hasattr(sprite, 'image'):  # Check if the sprite has an image attribute
+                self.display_surface.blit(sprite.image, sprite.rect)  # Draw the sprite's image
+        
         self.visible_sprites.update()
 
 
@@ -41,13 +45,5 @@ class LevelLabOak:
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
 
-class YsortCameraGroup(pygame.sprite.Group):
-    def __init__(self):
-        super().__init__()
-        self.display_surface = pygame.display.get_surface()
-
-    def custom_draw(self, player):
-        for sprite in self.sprites():
-            self.display_surface.blit(sprite.image)
            
                 
