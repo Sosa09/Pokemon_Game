@@ -1,5 +1,5 @@
 import pygame
-from settings_lab_oak import  *
+from lab_oak_settings import  *
 from lab_oak_tile import LabOakTile
 from lab_oak_pokemon import *
 from player import Player

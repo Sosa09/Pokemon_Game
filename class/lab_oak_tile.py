@@ -1,5 +1,5 @@
 import pygame
-from settings import *
+from lab_oak_settings import *
 
 class LabOakTile(pygame.sprite.Sprite):
 

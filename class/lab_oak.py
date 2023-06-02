@@ -2,8 +2,8 @@
 import pygame
 import sys
 from button import Button
-from level_lab_oak import LevelLabOak
-from settings_lab_oak import *
+from lab_oak_level import LevelLabOak
+from lab_oak_settings import *
 
 class FirstGameScreen():
     def __init__(self):
