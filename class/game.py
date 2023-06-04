@@ -2,6 +2,7 @@ import pygame, sys
 from settings import *
 from level import Level
 from battle import Battle
+from pokemon import *
 class Game:
 
     def __init__(self):
@@ -13,6 +14,7 @@ class Game:
         self.level = Level()
         self.battle = Battle()
         self.groups = pygame.sprite.Group()
+        
         self.groups.add(self.level.pokemons)
         self.running = True
 
@@ -23,12 +25,6 @@ class Game:
                     pygame.quit()
                     sys.exit()  
                              
-            # for button in self.buttons: # added by joris maar nog niet opp
-            #     if button.handle_event(event):
-            #         button_text = button.text.lower()
-            #         if button_text == "pause":
-            #             running = False
-      
             # check for collisions
             self.collision_detection()
             self.screen.fill('chartreuse4')

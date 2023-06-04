@@ -5,7 +5,7 @@ from button import Button
 from settings import Settings
 from intro import IntroVideo
 from lab_oak import FirstGameScreen
-from map import Game
+from game import Game
 
 # Menu screen class
 class MenuScreen(Screen):

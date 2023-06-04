@@ -7,5 +7,10 @@ class Trainer(pygame.sprite.Sprite):
         self.pygame = pygame
         self.name = name
         self.age = age
-        self.image = "PATH"
-      
+        self.pokemons = [] #determined by the pokemon choice and the catches GOTTA CATCH M ALL
+
+    def greet(self):
+        pass
+    def __str__(self):
+        #trainer's info
+        pass
