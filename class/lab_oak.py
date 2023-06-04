@@ -25,8 +25,6 @@ class FirstGameScreen():
         self.button_color = (50, 50, 50)
         self.hover_color = (100, 100, 100)
         self.new_button = Button(100, 50, 200, 50, "Pause", self.font, self.text_color, self.button_color, self.hover_color)
-
-
             
         # Load the player character image
         self.player_image = pygame.image.load("images\player.png")
@@ -39,14 +37,6 @@ class FirstGameScreen():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-
-                elif event.type == pygame.K_ESCAPE:
-                          # Create a font object
-                    font = pygame.font.SysFont("Arial", 30)
-                    text_surface = font.render(f"Battle Begins!\nTrainer: Ash ", True, (0, 0, 0))                # Position the text
-                    #text_rect = text_surface.get_rect()
-                    #text_rect.center = (400, 300)
-                
                 
             
             # Handle button events

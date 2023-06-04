@@ -1,6 +1,7 @@
 import pygame
 from lab_oak_settings import  *
 from lab_oak_tile import LabOakTile
+from lab_oak_prof_oak import *
 from lab_oak_pokemon import *
 from player import Player
 # from button import Button
@@ -36,6 +37,8 @@ class LevelLabOak:
                 y = row_index * TILESIZE
                 if col == 'x':
                     LabOakTile((x,y),[self.visible_sprites,self.obstacle_sprites])
+                if col == 'o':
+                    ProfessorOak((x,y), [self.visible_sprites, self.obstacle_sprites])
                 if col == '1':
                     self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
                 if col == '2':
