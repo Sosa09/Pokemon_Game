@@ -19,6 +19,7 @@ class FirstGameScreen():
         
         #background
         self.draw(self.screen)
+
             
         # Load the player character image
         self.player_image = pygame.image.load("images\player.png")
@@ -53,26 +54,15 @@ class FirstGameScreen():
                 if event.type == pygame.QUIT:
                     pygame.quit()
                     sys.exit()
-                
-            # Check if any button was clicked
-            button_clicked = False
-            for button in self.buttons:
-                if button.handle_event(event):
-                    button_clicked = True
-                    break
-            
-            if button_clicked:
-                # Handle logic for the clicked button
-                # You can access the corresponding Pokémon using self.level.pokemons[i],
-                # where i is the index of the clicked button in self.buttons list
+        
                 
 
-            # Check if the player collides with any elements
-            # for pokemon in self.level.pokemons:
-            #     if pygame.sprite.collide_rect(self.level.player, pokemon):
-            #         self.collided_item = pokemon
-            #         self.display_info(pokemon.name, pokemon._load_image())  # Display Pokémon info
-            #         pygame.display.update()
+            #Check if the player collides with any elements
+            for pokemon in self.level.pokemons:
+                if pygame.sprite.collide_rect(self.level.player, pokemon):
+                    self.collided_item = pokemon
+                    self.display_info(pokemon.name, pokemon._load_image())  # Display Pokémon info
+                    pygame.display.update()
 
                     
                     
@@ -103,7 +93,9 @@ class FirstGameScreen():
                 f"Defense: {pokemon_info['Defense']}  \n" \
                 f"Sp. Attack: {pokemon_info['Sp. Attack']}  \n" \
                 f"Sp. Defense: {pokemon_info['Sp. Defense']}  \n" \
-                f"Speed: {pokemon_info['Speed']}"
+                f"Speed: {pokemon_info['Speed']}   \n " \
+                f"\n" \
+                f"Press 't' to take the pokemon"
         
         # Render text surfaces
         name_surface = self.font.render("Name: " + pokemon_info["name"], True, self.FONT_COLOR)
@@ -140,21 +132,18 @@ class FirstGameScreen():
         # Blit the Pokémon image
         self.screen.blit(image, (700, 150))  # Fixed position for the image  
 
-        # Render buttons for each Pokemon
-        for i, pokemon in enumerate(self.level.pokemons):
-            button_x = 700
-            button_y = 400 + (i * 60)
-            button_width = 100
-            button_height = 50
-            button_text = f"Choose {pokemon.name}"
-            button = Button(button_x, button_y, button_width, button_height, button_text,
-                            self.font, self.text_color, self.button_color, self.hover_color)
-            button.draw(self.screen)
 
-            if button.handle_event(pygame.MOUSEBUTTONDOWN):
-                self.selected_pokemon = pokemon
-                self.level.pokemons.remove(pokemon)
-                break
+
+        # Check if the 'T' key was pressed
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_t]:
+            self.selected_pokemon = self.collided_item
+            self.groups.remove(self.collided_item)
+            self.level.pokemons.remove(self.collided_item)
+            self.groups.update()
+            pygame.display.update()
+
+
 
         
             
