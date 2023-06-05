@@ -84,6 +84,20 @@ class FirstGameScreen():
 
     
     def display_info(self, pokemon_name, image):
+
+                # Check if the 'T' key was pressed
+        keys = pygame.key.get_pressed()
+        if keys[pygame.K_t]:
+            
+            if len(self.level.player.pokemons) < 1:
+                self.level.player.pokemons.append(self.collided_item)
+                print(self.level.player.pokemons)
+                self.selected_pokemon = self.collided_item
+                self.groups.remove(self.collided_item)
+                self.level.pokemons.remove(self.collided_item)
+                self.groups.update()
+            pygame.display.update()
+
         # Load Pokémon information from JSON file
         pokemon_info = self.load_pokemon_info_from_json(pokemon_name)
 
@@ -134,14 +148,7 @@ class FirstGameScreen():
 
 
 
-        # Check if the 'T' key was pressed
-        keys = pygame.key.get_pressed()
-        if keys[pygame.K_t]:
-            self.selected_pokemon = self.collided_item
-            self.groups.remove(self.collided_item)
-            self.level.pokemons.remove(self.collided_item)
-            self.groups.update()
-            pygame.display.update()
+
 
 
 
