@@ -2,7 +2,6 @@
 import json
 import pygame
 import sys
-from button import Button
 from lab_oak_level import LevelLabOak
 from lab_oak_settings import *
 

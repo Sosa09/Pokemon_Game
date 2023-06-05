@@ -47,6 +47,7 @@ class LevelLabOak:
                     self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Squirtle", "Images/Pokemons/squirtle.png"))
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
+    
 
            
                 

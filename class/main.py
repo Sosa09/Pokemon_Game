@@ -26,17 +26,8 @@ def run_game():
     # Define colors
     BLACK = (0, 0, 0)
 
-    current_mode = "Mode0"  # oaks lab
-
     # Set the current screen
     current_screen = MenuScreen()
-
-    if current_screen == "Mode1":
-        current_screen = FirstGameScreen().run()  # Instantiate the Mode1Screen object
-    elif current_screen == "Mode0":
-        current_screen = MenuScreen()
-    elif current_mode == "Mode2":
-        current_screen = Game().run()  # Instantiate the Mode2Screen object
 
     # Game loop
     while True:
