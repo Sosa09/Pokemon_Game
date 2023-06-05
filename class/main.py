@@ -5,6 +5,7 @@ from menuscreen import MenuScreen
 from settings import Settings
 from intro import IntroVideo
 from lab_oak import FirstGameScreen
+from map import Game
 
 
 def run_game():
@@ -25,8 +26,17 @@ def run_game():
     # Define colors
     BLACK = (0, 0, 0)
 
+    current_mode = "Mode0"  # oaks lab
+
     # Set the current screen
     current_screen = MenuScreen()
+
+    if current_screen == "Mode1":
+        current_screen = FirstGameScreen().run()  # Instantiate the Mode1Screen object
+    elif current_screen == "Mode0":
+        current_screen = MenuScreen()
+    elif current_mode == "Mode2":
+        current_screen = Game().run()  # Instantiate the Mode2Screen object
 
     # Game loop
     while True:
@@ -48,7 +58,7 @@ def run_game():
         pygame.display.flip()
 
         # Check if the current screen is the game screen
-        if isinstance(current_screen, FirstGameScreen):
+        if isinstance(current_screen, FirstGameScreen): 
             # Check the current state of keyboard keys
             keys = pygame.key.get_pressed()
             if keys[pygame.K_LEFT]:

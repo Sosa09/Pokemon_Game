@@ -40,11 +40,11 @@ class LevelLabOak:
                 if col == 'o':
                     ProfessorOak((x,y), [self.visible_sprites, self.obstacle_sprites])
                 if col == '1':
-                    self.pokemons.append(Pokemon1((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Bulbasaur", "Images/Pokemons/bulbasaur0.png"))
                 if col == '2':
-                    self.pokemons.append(Pokemon2((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Charmander", "Images/Pokemons/charmander.png"))
                 if col == '3':
-                    self.pokemons.append(Pokemon3((x,y),[self.visible_sprites]))
+                    self.pokemons.append(Pokemon((x,y),[self.visible_sprites], "Squirtle", "Images/Pokemons/squirtle.png"))
                 if col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
 

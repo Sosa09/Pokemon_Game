@@ -6,7 +6,7 @@ class Pokemon1(pygame.sprite.Sprite):
         super().__init__(groups)
         self.image = pygame.image.load('Images/Pokemons/bulbasaur0.png').convert_alpha()
         self.rect = self.image.get_rect(topleft = pos)
-        self.name = "Bullbizar"
+        self.name = "Bulbasaur"
 
 
 class Pokemon2(pygame.sprite.Sprite):
