@@ -35,6 +35,11 @@ class FirstGameScreen():
         # Load box image
         self.box_image = pygame.Surface((self.BOX_WIDTH, self.BOX_HEIGHT))
 
+        #button info
+        self.text_color = (255, 255, 255)
+        self.button_color = (50, 50, 50)
+        self.hover_color = (100, 100, 100)
+
 
         # Create a font object
         self.font = pygame.font.Font(None, self.FONT_SIZE)
@@ -49,15 +54,26 @@ class FirstGameScreen():
                     pygame.quit()
                     sys.exit()
                 
-        
+            # Check if any button was clicked
+            button_clicked = False
+            for button in self.buttons:
+                if button.handle_event(event):
+                    button_clicked = True
+                    break
+            
+            if button_clicked:
+                # Handle logic for the clicked button
+                # You can access the corresponding Pokémon using self.level.pokemons[i],
+                # where i is the index of the clicked button in self.buttons list
+                
 
             # Check if the player collides with any elements
-            for pokemon in self.level.pokemons:
-                if pygame.sprite.collide_rect(self.level.player, pokemon):
-                    self.collided_item = pokemon
-                    self.display_info(pokemon.name, pokemon._load_image())  # Display Pokémon info
-                    pygame.display.update()
-                    # running = False
+            # for pokemon in self.level.pokemons:
+            #     if pygame.sprite.collide_rect(self.level.player, pokemon):
+            #         self.collided_item = pokemon
+            #         self.display_info(pokemon.name, pokemon._load_image())  # Display Pokémon info
+            #         pygame.display.update()
+
                     
                     
                     
@@ -122,7 +138,23 @@ class FirstGameScreen():
             stats_y += surface.get_height()  # Increase the vertical position
 
         # Blit the Pokémon image
-        self.screen.blit(image, (700, 150))  # Fixed position for the image   
+        self.screen.blit(image, (700, 150))  # Fixed position for the image  
+
+        # Render buttons for each Pokemon
+        for i, pokemon in enumerate(self.level.pokemons):
+            button_x = 700
+            button_y = 400 + (i * 60)
+            button_width = 100
+            button_height = 50
+            button_text = f"Choose {pokemon.name}"
+            button = Button(button_x, button_y, button_width, button_height, button_text,
+                            self.font, self.text_color, self.button_color, self.hover_color)
+            button.draw(self.screen)
+
+            if button.handle_event(pygame.MOUSEBUTTONDOWN):
+                self.selected_pokemon = pokemon
+                self.level.pokemons.remove(pokemon)
+                break
 
         
             
