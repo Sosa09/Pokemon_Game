@@ -12,7 +12,7 @@ class Game:
         pygame.display.set_caption('POKEMON SYNTRA')
         self.clock = pygame.time.Clock()
         self.level = Level()
-        self.battle = Battle()
+        
         self.groups = pygame.sprite.Group()
         
         self.groups.add(self.level.pokemons)
@@ -37,8 +37,9 @@ class Game:
         for x in self.level.pokemons: 
             if pygame.sprite.collide_rect(self.level.player, x):
                 #collidedItem contains the object with
+                battle = Battle()
                 self.collidedItem = x
-                self.battle.go_to_battle(self)
+                battle.go_to_battle(self)
                 
         #this collision is triggered if a pokeball or posion has been found
         #code here.

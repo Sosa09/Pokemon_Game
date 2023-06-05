@@ -7,6 +7,7 @@ class Player(Trainer):
         super().__init__(groups)
         self.bag = [] #container for potion, pokeballs, pokemons
         self.pokemons = []
+        self.battlePokemon = None
         self.battle_x = 1280
         self.battle_y = 380
         self.battleImage = self.pygame.image.load("Images/Trainers/ashBattle.png").convert_alpha()
@@ -59,20 +60,20 @@ class Player(Trainer):
         self.collision('horizontal')
         self.rect.y += self.direction.y * speed
         self.collision('vertical')
-        
-        
+            
     # Display Battle elements dynamically (Player )
     def show_trainer(self, pygame, game):
         #load the trainer image
         image = self.battleImage
         image = pygame.transform.scale(image, (100, 100))
         game.screen.blit(image, (self.battle_x, self.battle_y))
-        
-    def pokemon_choice(self, pygame, game):
+
+    def pokemon_choice(self, pygame, game, pokemon):
         #load the pokemon trainer image
-        image = self.pokemons[0].image
+        self.battlePokemon = pokemon
+        image = self.battlePokemon.image
         image = pygame.transform.scale(image, (100, 100))
         game.screen.blit(image, (50, 380))
         #health bar pokemon trainer
         pygame.draw.rect(game.screen, "black",(200,400,850,60),5, 1,1,1,1,1)
-        pygame.draw.rect(game.screen, "red", (210,410,830,40))  
+        pygame.draw.rect(game.screen, "red", (210,410,self.battlePokemon.get_healthBarValue(),40))  

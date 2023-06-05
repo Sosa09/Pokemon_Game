@@ -4,7 +4,7 @@
         {
             "name": "Bulbasaur",
             "type": ["Gras", "Poison"],
-            "hp": 45,
+            "hp": 100,
             "at": 49,
             "df": 49,
             "spa": 65,
@@ -17,7 +17,7 @@
         {
             "name": "Charmander",
             "type": ["Fire"],
-            "hp": 39,
+            "hp": 100,
             "at": 52,
             "df": 43,
             "spa": 60,
@@ -31,7 +31,7 @@
         {
             "name": "Squirtle",
             "type": ["Water"],
-            "hp": 44,
+            "hp": 100,
             "at": 48,
             "df": 65,
             "spa": 50,
@@ -45,7 +45,7 @@
         {
             "name": "Ivysaur",
             "type": ["Gras", "Poison"],
-            "hp": 60,
+            "hp": 100,
             "at": 62,
             "df": 63,
             "spa": 80,
@@ -59,7 +59,7 @@
         {
             "name": "Charmeleon",
             "type": ["Fire"],
-            "hp": 45,
+            "hp": 100,
             "at": 49,
             "df": 49,
             "spa": 65,
@@ -74,7 +74,7 @@
         {
             "name": "Wartortle",
             "type": ["Gras", "Poison"],
-            "hp": 45,
+            "hp": 100,
             "at": 49,
             "df": 49,
             "spa": 65,
@@ -88,7 +88,7 @@
         {
             "name": "eevee",
             "type": ["Normal"],
-            "hp": 45,
+            "hp": 100,
             "at": 49,
             "df": 49,
             "spa": 65,
