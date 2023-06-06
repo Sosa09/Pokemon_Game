@@ -1,7 +1,7 @@
 #Created, Managed by Soufiane
 import pygame, sys, random
 from settings import *
-
+from potion import Potion
 # define your class
 class Battle():
     CHOICE = ["Attack", "Sp Attack", "Defense", "Sp Def", "Recover", "Pokemons"]
@@ -14,7 +14,7 @@ class Battle():
         self.opponent_y = 50
         self.battlePresentationEnded = False  
         self.battleEnded = False  
-         
+        self.opponentRecoverIndex = 1
     #Define Battle function
     def go_to_battle(self,obj):
         # assign the pygame setting from the main game
@@ -128,7 +128,10 @@ class Battle():
             # draw it on the screen
             self.game.screen.blit(text_render, text_rect)
     def _battle(self,player_choice):
-        ennemy_choice = random.randint(0,5)
+        if self.opponentRecoverIndex == 1:
+            ennemy_choice = random.randint(0,4)
+        else:
+            ennemy_choice = random.randint(0,3)
         playerDamage = 0.0
         playerChoice = self.CHOICE[player_choice]
         ennemyChoice = self.CHOICE[ennemy_choice]
@@ -149,7 +152,7 @@ class Battle():
         elif player_choice == 0 and ennemy_choice == 4:
             ennemyDamage = self.ash.battlePokemon.attack()
             self.ennemy.recover()
-            
+            self.opponentRecoverIndex = 0
             
         #if player SP ATTACK and ENNEMY 0,1,2,3,4
         if player_choice == 1 and ennemy_choice == 0:
@@ -165,7 +168,7 @@ class Battle():
         elif player_choice == 1 and ennemy_choice == 4:
             ennemyDamage = self.ash.battlePokemon.special_attack()
             self.ennemy.recover()
-            
+            self.opponentRecoverIndex = 0
         #if player DEFENSE and ENNEMY 0,1,2,3,4  
         #defense if statements has been erased since defense against defense has no damage !        
         if player_choice == 2 and ennemy_choice == 0:
@@ -175,7 +178,7 @@ class Battle():
             ennemyDamage = self.ash.battlePokemon.attack()   
         elif player_choice == 2 and ennemy_choice == 4:
             self.ennemy.recover() 
-            
+            self.opponentRecoverIndex = 0
         #if player SP DEFENSE and ENNEMY 0,1,2,3,4 
         #defense if statements has been erased since defense against defense has no damage !             
         if player_choice == 3 and ennemy_choice == 0:
@@ -185,44 +188,52 @@ class Battle():
             ennemyDamage = self.ash.battlePokemon.attack()    
         elif player_choice == 3 and ennemy_choice == 4:
             self.ennemy.recover()
-            
+            self.opponentRecoverIndex = 0
         #if player RECOVER and ENNEMY 0,1,2,3,4
         if player_choice == 4 and ennemy_choice == 0:
             playerDamage = self.ennemy.attack()
-            self.ash.battlePokemon.recover()
+            self.ash.potion_consumed(self.ash.battlePokemon)  
+                
         elif player_choice == 4 and ennemy_choice == 1:
             playerDamage = self.ennemy.special_attack()
-            self.ash.battlePokemon.recover()    
+            self.ash.potion_consumed(self.ash.battlePokemon)     
         elif player_choice == 4 and ennemy_choice == 2:
-            self.ash.battlePokemon.recover()
+            self.ash.potion_consumed(self.ash.battlePokemon)  
         elif player_choice == 4 and ennemy_choice == 3:
-            self.ash.battlePokemon.recover()
+            self.ash.potion_consumed(self.ash.battlePokemon)  
         elif player_choice == 4 and ennemy_choice == 4:
-            self.ash.battlePokemon.recover()
+            self.ash.potion_consumed(self.ash.battlePokemon)  
             self.ennemy.recover()
+            self.opponentRecoverIndex = 0
         
         #if player SWAP POKEMON and ENNEMY 0,1,2,3,4
         elif player_choice == 5 and ennemy_choice == 0:
-            self.swap_pokemon()
+            if len(self.ash.pokemons) > 1:
+                changetoPokemon = self.ash.swap_pokemon(self.ash.battlePokemon);
+                self.ash.pokemon_choice(pygame, self.game, changetoPokemon)
             playerDamage = self.ennemy.special_attack()
-
         elif player_choice == 5 and ennemy_choice == 1:
-            self.swap_pokemon()
+            if len(self.ash.pokemons) > 1:
+                changetoPokemon = self.ash.swap_pokemon(self.ash.battlePokemon);
+                self.ash.pokemon_choice(pygame, self.game, changetoPokemon)
             playerDamage = self.ennemy.special_attack()
-
         elif player_choice == 5 and ennemy_choice == 2:
-            self.swap_pokemon()
+            if len(self.ash.pokemons) > 1:
+                changetoPokemon = self.ash.swap_pokemon(self.ash.battlePokemon);
+                self.ash.pokemon_choice(pygame, self.game, changetoPokemon)
             playerDamage = self.ennemy.special_attack()
-    
         elif player_choice == 5 and ennemy_choice == 3:
-            self.swap_pokemon()
+            if len(self.ash.pokemons) > 1:
+                changetoPokemon = self.ash.swap_pokemon(self.ash.battlePokemon);
+                self.ash.pokemon_choice(pygame, self.game, changetoPokemon)
             playerDamage = self.ennemy.special_attack()
-  
         elif player_choice == 5 and ennemy_choice == 4:
-            self.swap_pokemon()
+            if len(self.ash.pokemons) > 1:
+                changetoPokemon = self.ash.swap_pokemon(self.ash.battlePokemon);
+                self.ash.pokemon_choice(pygame, self.game, changetoPokemon)
             playerDamage = self.ennemy.special_attack()
             
-        self.text = f"Ennemy's choice: {ennemyChoice} caused {playerDamage}\n\n\nplayer's choice {playerChoice} caused {ennemyDamage}"
+        self.text = f"{self.ennemy.name}'s choice: {ennemyChoice} caused {playerDamage}\n\n\{self.ash.battlePokemon.name}'s choice {playerChoice} caused {ennemyDamage}"
         
         #Player pokemon update hp and healthbar
         self.ash.battlePokemon.set_healthBarValue(playerDamage*4)
@@ -236,7 +247,7 @@ class Battle():
         elif(self.ash.battlePokemon.get_healthBarValue() <= 0):
             self.battleEnded = True 
             self.text = "Damn you lost! Press ESC to go back to the map"
-        
+    
     def _go_to_map(self):
         # #remove element after it has collided
         # self.game.groups.remove(self.ennemy)

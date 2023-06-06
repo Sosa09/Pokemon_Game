@@ -1,6 +1,7 @@
 # Created and managed by Tanguy and Soufiane
 
 from trainer import Trainer
+from potion import Potion
 class Player(Trainer):
 
     def __init__(self, pos,groups,obstacle_sprites):
@@ -60,7 +61,21 @@ class Player(Trainer):
         self.collision('horizontal')
         self.rect.y += self.direction.y * speed
         self.collision('vertical')
-            
+    def total_potion(self):
+        index = 0
+        for item in self.bag:
+            if type(item) == Potion:
+                index = index + 1
+        return index
+    def potion_consumed(self, pokemon):
+        if self.total_potion() > 0:
+            pokemon.recover();
+            for item in self.bag:
+                if type(item) == Potion:
+                    self.bat.remove(item)
+                    break 
+        else:
+            return "not enough potion"
     # Display Battle elements dynamically (Player )
     def show_trainer(self, pygame, game):
         #load the trainer image
@@ -77,3 +92,9 @@ class Player(Trainer):
         #health bar pokemon trainer
         pygame.draw.rect(game.screen, "black",(200,400,850,60),5, 1,1,1,1,1)
         pygame.draw.rect(game.screen, "red", (210,410,self.battlePokemon.get_healthBarValue(),40))  
+        
+    def swap_pokemon(self, current_pokemon):
+        
+        for pokemon in self.pokemons:
+            if current_pokemon != pokemon:
+                return pokemon;

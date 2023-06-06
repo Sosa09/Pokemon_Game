@@ -49,8 +49,7 @@ class Pokemon(pygame.sprite.Sprite):
     def recover(self):
         #check if potion available
         #add 10hp
-        if(self._healthBar < 820):
-            self._healthBar = self._healthBar + 10
+        self._healthBar = 830
     def set_position(self,pos):
         self.pos = pos
         self.rect = self.image.get_rect(topleft = self.pos)

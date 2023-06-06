@@ -19,6 +19,7 @@ class Level:
         self.visible_sprites = YsortCameraGroup()
         self.obstacle_sprites = pygame.sprite.Group()
         self.pokemons = []
+        self.items = []
         self.list_pokemons = []
         self.pokemon_choice = []
         self._load_pokemons()
@@ -27,8 +28,6 @@ class Level:
         self.create_button()
      
     #declare a list variable to store the pokemons
-
-
     def _load_pokemons(self):
         
 
@@ -86,9 +85,16 @@ class Level:
                     p.set_groups([self.visible_sprites])
                     self.pokemons.append(p)
                 elif col == '5':
-                    self.pokeball = Pokeball((x,y),[self.visible_sprites])
+                    p  = self.list_pokemons[4]
+                    p.set_position((x,y))
+                    p.set_groups([self.visible_sprites])
+                    self.pokemons.append(p)
+                elif col == 'b':
+
+                    self.items.append(Pokeball((x,y),[self.visible_sprites]))
                 elif col == 'p':
-                    self.potion = Potion((x,y),[self.visible_sprites])
+                   
+                   self.items.append(Potion((x,y),[self.visible_sprites]))
                 elif col == 'z':
                     self.player = Player((x,y),[self.visible_sprites],self.obstacle_sprites)
                     self.player.pokemons.append(self.pokemon_choice[0])
