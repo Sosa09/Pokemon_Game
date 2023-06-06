@@ -5,6 +5,8 @@ from menuscreen import MenuScreen
 from settings import Settings
 from intro import IntroVideo
 from lab_oak import FirstGameScreen
+from game import Game
+
 
 def run_game():
     # Initialize Pygame
@@ -47,7 +49,7 @@ def run_game():
         pygame.display.flip()
 
         # Check if the current screen is the game screen
-        if isinstance(current_screen, FirstGameScreen):
+        if isinstance(current_screen, FirstGameScreen): 
             # Check the current state of keyboard keys
             keys = pygame.key.get_pressed()
             if keys[pygame.K_LEFT]:
