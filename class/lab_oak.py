@@ -5,6 +5,7 @@ import sys
 from lab_oak_level import LevelLabOak
 from lab_oak_settings import *
 
+
 class FirstGameScreen():
     def __init__(self):
         #de Basics
@@ -35,12 +36,6 @@ class FirstGameScreen():
         # Load box image
         self.box_image = pygame.Surface((self.BOX_WIDTH, self.BOX_HEIGHT))
 
-        #button info
-        self.text_color = (255, 255, 255)
-        self.button_color = (50, 50, 50)
-        self.hover_color = (100, 100, 100)
-
-
         # Create a font object
         self.font = pygame.font.Font(None, self.FONT_SIZE)
 
@@ -63,8 +58,11 @@ class FirstGameScreen():
                     self.display_info(pokemon.name, pokemon._load_image())  # Display Pokémon info
                     pygame.display.update()
 
-                    
-                    
+            for exi in self.level.exit:        
+                if pygame.sprite.collide_rect(self.level.player, exi):
+                    if self.level.player.pokemons.count != 0:
+                        pygame.quit()
+                        sys.exit
                     
             self.draw(self.screen)
             self.level.run()
@@ -95,6 +93,7 @@ class FirstGameScreen():
                 self.groups.remove(self.collided_item)
                 self.level.pokemons.remove(self.collided_item)
                 self.groups.update()
+                self.collided_item
             pygame.display.update()
 
         # Load Pokémon information from JSON file
