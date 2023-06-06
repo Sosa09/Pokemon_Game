@@ -1,6 +1,7 @@
 import pygame
 from lab_oak_settings import  *
 from lab_oak_tile import LabOakTile
+from lab_oak_tile_exit import LabOakTileExit
 from lab_oak_prof_oak import *
 from lab_oak_pokemon import *
 from player import Player
@@ -16,6 +17,7 @@ class LevelLabOak:
         self.visible_sprites = pygame.sprite.Group()
         self.obstacle_sprites = pygame.sprite.Group()
         self.pokemons = []
+        self.exit = []
         self.create_map()
 
            
@@ -23,6 +25,8 @@ class LevelLabOak:
     def run(self):
         for sprite in self.visible_sprites:
             if isinstance(sprite, LabOakTile):
+                continue  # Skip drawing LabOakTile objects (had error bc lab_oak_tile had no more image)
+            if isinstance(sprite, LabOakTileExit):
                 continue  # Skip drawing LabOakTile objects (had error bc lab_oak_tile had no more image)
             if hasattr(sprite, 'image'):  # Check if the sprite has an image attribute
                 self.display_surface.blit(sprite.image, sprite.rect)  # Draw the sprite's image
@@ -37,6 +41,8 @@ class LevelLabOak:
                 y = row_index * TILESIZE
                 if col == 'x':
                     LabOakTile((x,y),[self.visible_sprites,self.obstacle_sprites])
+                if col == 'd':
+                    self.exit.append(LabOakTileExit((x,y),[self.visible_sprites,self.obstacle_sprites]))
                 if col == 'o':
                     ProfessorOak((x,y), [self.visible_sprites, self.obstacle_sprites])
                 if col == '1':
